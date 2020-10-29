@@ -1,2 +1,5 @@
-# richard-tl.github.io
-personal website
+# Richard's Personal Website
+
+currently tweaking
+
+
