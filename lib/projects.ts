@@ -2,6 +2,9 @@ import fs from "node:fs"
 import path from "node:path"
 
 const PROJECTS_DIR = path.join(process.cwd(), "content", "projects")
+const PUBLIC_PROJECTS_DIR = path.join(process.cwd(), "public", "projects")
+
+const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp|avif|svg)$/i
 
 // Sort helper so "boombox2" < "boombox10" (numeric-aware).
 function byNumericSuffix(a: string, b: string) {
@@ -10,13 +13,31 @@ function byNumericSuffix(a: string, b: string) {
   return na - nb
 }
 
-// All project slugs = subfolder names under content/projects.
+// A project exists if it has either a markdown folder (content/projects/<slug>)
+// or an image folder (public/projects/<slug>). This lets a project be
+// image-only when no text has been written yet.
 export function getProjectSlugs(): string[] {
-  if (!fs.existsSync(PROJECTS_DIR)) return []
+  const slugs = new Set<string>()
+  for (const base of [PROJECTS_DIR, PUBLIC_PROJECTS_DIR]) {
+    if (!fs.existsSync(base)) continue
+    for (const entry of fs.readdirSync(base, { withFileTypes: true })) {
+      if (entry.isDirectory()) slugs.add(entry.name)
+    }
+  }
+  return [...slugs]
+}
+
+// Ordered image paths for a project from public/projects/<slug>, e.g.
+// ["/projects/boombox/boombox1.jpg", "/projects/boombox/boombox2.jpg", ...].
+// The first image is treated as the cover.
+export function getProjectImages(slug: string): string[] {
+  const dir = path.join(PUBLIC_PROJECTS_DIR, slug)
+  if (!fs.existsSync(dir)) return []
   return fs
-    .readdirSync(PROJECTS_DIR, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
+    .readdirSync(dir)
+    .filter((file) => IMAGE_EXTENSIONS.test(file))
+    .sort(byNumericSuffix)
+    .map((file) => `/projects/${slug}/${file}`)
 }
 
 // The ordered markdown pages for a project, e.g. boombox1.md, boombox2.md, ...

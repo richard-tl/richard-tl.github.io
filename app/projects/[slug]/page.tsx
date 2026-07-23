@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Markdown } from "@/components/markdown"
-import { getProjectPages, getProjectSlugs, getProjectTitle } from "@/lib/projects"
+import { getProjectImages, getProjectPages, getProjectSlugs, getProjectTitle } from "@/lib/projects"
 
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }))
@@ -17,7 +17,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   if (!getProjectSlugs().includes(slug)) notFound()
 
   const pages = getProjectPages(slug)
+  const images = getProjectImages(slug)
   const title = getProjectTitle(slug)
+  const [cover, ...moreImages] = images
+  const hasContent = pages.length > 0 || images.length > 0
 
   return (
     <main className="mx-auto min-h-screen max-w-2xl px-6 py-12 sm:py-16">
@@ -31,11 +34,28 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <h1 className="mt-8 text-2xl font-bold leading-tight">{title}</h1>
 
       <div className="mt-8 flex flex-col gap-10">
-        {pages.length > 0 ? (
-          pages.map((md, i) => <Markdown key={i}>{md}</Markdown>)
-        ) : (
-          <p className="text-sm text-muted-foreground">No content yet.</p>
-        )}
+        {/* Cover photo (first image) */}
+        {cover ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={cover || "/placeholder.svg"} alt={`${title} cover`} className="block h-auto w-full" />
+        ) : null}
+
+        {/* Markdown pages, stacked in numeric order */}
+        {pages.map((md, i) => (
+          <Markdown key={i}>{md}</Markdown>
+        ))}
+
+        {/* Additional photos, stacked in order (like the art page) */}
+        {moreImages.length > 0 ? (
+          <div className="flex flex-col gap-[10px]">
+            {moreImages.map((src, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img key={i} src={src || "/placeholder.svg"} alt={`${title} image ${i + 2}`} className="block h-auto w-full" />
+            ))}
+          </div>
+        ) : null}
+
+        {!hasContent ? <p className="text-sm text-muted-foreground">No content yet.</p> : null}
       </div>
     </main>
   )
