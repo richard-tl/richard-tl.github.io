@@ -106,7 +106,7 @@ export const experiences: Experience[] = [
   {
     role: "R&D Engineer",
     org: "Sonovance / Stanford Medicine",
-    period: "2025",
+    period: "2025 — 26",
     bullets: ["Signal processing for 3D ultrasound imaging", "Robotic capture via reinforcement learning"],
   },
   {
