@@ -4,7 +4,7 @@ export function ExperienceSection() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex items-baseline justify-between gap-4">
-        <h2 className="text-sm uppercase tracking-widest text-muted-foreground">Experience</h2>
+        <h2 className="text-sm uppercase tracking-widest text-muted-foreground">Work Experience</h2>
         <a
           href={linkedinUrl}
           target="_blank"
