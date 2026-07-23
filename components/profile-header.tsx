@@ -1,3 +1,5 @@
+"use client"
+
 import { profile } from "@/lib/content"
 
 export function ProfileHeader() {
@@ -10,6 +12,10 @@ export function ProfileHeader() {
           <img
             src={profile.photo || "/placeholder.svg"}
             alt={`Portrait of ${profile.name}`}
+            onError={(e) => {
+              // Keep a clean grey box until the real headshot is added to /public/profile.
+              e.currentTarget.style.visibility = "hidden"
+            }}
             className="h-full w-full object-cover"
           />
         ) : (
