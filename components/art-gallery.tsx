@@ -9,7 +9,7 @@ function hideOnError(e: React.SyntheticEvent<HTMLImageElement>) {
 
 export function ArtGallery() {
   return (
-    <div className="mx-auto flex max-w-3xl flex-col">
+    <div className="mx-auto flex max-w-lg flex-col">
       {/* Top banner — centered, matching the previous site's top-image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -17,7 +17,7 @@ export function ArtGallery() {
         alt="Banner"
         loading="lazy"
         onError={hideOnError}
-        className="mx-auto mb-[10px] block max-h-[50vh] w-auto max-w-full"
+        className="mx-auto mb-[10px] block max-h-[35vh] w-auto max-w-full"
       />
 
       {/* Photo grid — masonry columns, matching the previous site's photo-grid */}
