@@ -70,7 +70,7 @@ export function PortfolioSection() {
         </div>
       )}
 
-      {active === "music" && <p className="text-sm uppercase tracking-wider text-muted-foreground/70">Coming soon</p>}
+      {active === "music" && <p className="text-sm uppercase tracking-wider text-muted-foreground/70">...</p>}
     </div>
   )
 }
