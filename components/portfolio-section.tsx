@@ -62,10 +62,10 @@ export function PortfolioSection() {
                 {project.meta ? <p className="text-[13px] text-muted-foreground">{project.meta}</p> : null}
               </>
             )
-            return project.href ? (
-              <a key={i} href={project.href} target="_blank" rel="noreferrer" className="group block">
+            return project.slug ? (
+              <Link key={i} href={`/projects/${project.slug}`} className="group block">
                 {inner}
-              </a>
+              </Link>
             ) : (
               <div key={i} className="group block">
                 {inner}
