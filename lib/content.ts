@@ -128,25 +128,22 @@ export const experiences: Experience[] = [
 // ---------------------------------------------------------------------------
 // PORTFOLIO — Art / Writing / Music toggles
 // ---------------------------------------------------------------------------
-// ART GALLERY — replicates the layout of the previous site.
-//   spread : a single wide image centered up top   -> /public/images
-//   photos : a masonry column grid of photographs   -> /public/images + /public/images/photos
-//   designs: a stacked, full-width run of artwork    -> /public/art
+// ART GALLERY — replicates the layout of the previous site. Every file now
+// lives in /public/art (no separate images folder).
+//   spread : a single wide banner image centered up top
+//   photos : a masonry column grid of photographs
+//   designs: a stacked, full-width run of artwork
 export const artGallery = {
-  spread: "/images/grad_flip3.png",
+  spread: "/art/banner.png",
   photos: [
-    "/images/landscape1.png",
-    "/images/landscape2.png",
-    "/images/landscape4.png",
-    "/images/landscape3.png",
-    "/images/photos/row2p1.png",
-    "/images/photos/row2p2.png",
-    "/images/photos/row2p3.png",
-    "/images/photos/row2p4.png",
-    "/images/photos/row3p1.png",
-    "/images/photos/row3p2.png",
-    "/images/photos/row3p3.png",
-    "/images/photos/row3p4.png",
+    "/art/row2p1.png",
+    "/art/row2p2.png",
+    "/art/row2p3.png",
+    "/art/row2p4.png",
+    "/art/row3p1.png",
+    "/art/row3p2.png",
+    "/art/row3p3.png",
+    "/art/row3p4.png",
   ],
   designs: [
     "/art/design0.png",

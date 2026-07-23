@@ -10,14 +10,14 @@ function hideOnError(e: React.SyntheticEvent<HTMLImageElement>) {
 export function ArtGallery() {
   return (
     <div className="flex flex-col">
-      {/* Top spread — centered, matching the previous site's top-image */}
+      {/* Top banner — centered, matching the previous site's top-image */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={artGallery.spread || "/placeholder.svg"}
-        alt="Graduation spread"
+        alt="Banner"
         loading="lazy"
         onError={hideOnError}
-        className="mx-auto mb-3 block max-h-[70vh] w-auto max-w-full"
+        className="mx-auto mb-[10px] block max-h-[70vh] w-auto max-w-full"
       />
 
       {/* Photo grid — masonry columns, matching the previous site's photo-grid */}

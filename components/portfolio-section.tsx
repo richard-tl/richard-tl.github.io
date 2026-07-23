@@ -1,36 +1,35 @@
 "use client"
 
 import { useState } from "react"
-import { ArtGallery } from "@/components/art-gallery"
+import Link from "next/link"
 import { writing } from "@/lib/content"
 
-const subTabs = [
-  { id: "art", label: "Art" },
+const toggleTabs = [
   { id: "writing", label: "Writing" },
   { id: "music", label: "Music" },
 ] as const
 
-type SubTabId = (typeof subTabs)[number]["id"]
+type ToggleTabId = (typeof toggleTabs)[number]["id"]
+
+const tabClass = (isActive: boolean) =>
+  `text-sm uppercase tracking-wider transition-colors ${
+    isActive ? "text-foreground underline underline-offset-4" : "text-muted-foreground hover:text-foreground"
+  }`
 
 export function PortfolioSection() {
-  const [active, setActive] = useState<SubTabId>("art")
+  const [active, setActive] = useState<ToggleTabId>("writing")
 
   return (
     <div className="flex flex-col gap-10">
-      {/* Sub-toggle: Art / Writing / Music */}
-      <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap gap-8">
-        {subTabs.map((tab) => {
+      {/* Sub-toggle: Art (opens its own white page) / Writing / Music */}
+      <div className="flex flex-wrap gap-8">
+        <Link href="/art" className={tabClass(false)}>
+          Art
+        </Link>
+        {toggleTabs.map((tab) => {
           const isActive = active === tab.id
           return (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setActive(tab.id)}
-              className={`text-sm uppercase tracking-wider transition-colors ${
-                isActive ? "text-foreground underline underline-offset-4" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
+            <button key={tab.id} aria-selected={isActive} onClick={() => setActive(tab.id)} className={tabClass(isActive)}>
               {tab.label}
             </button>
           )
@@ -38,8 +37,6 @@ export function PortfolioSection() {
       </div>
 
       {/* Panels */}
-      {active === "art" && <ArtGallery />}
-
       {active === "writing" && (
         <div className="flex flex-col gap-4">
           <a
