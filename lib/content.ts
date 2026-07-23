@@ -68,11 +68,16 @@ export const publications: Publication[] = [
   },
 ]
 
+// Short lead line shown above the publication list.
+export const researchIntro =
+  "My published work spans multimodal transformer models for human-AI teams and neuroscience."
+
 // Google Scholar profile shown in the Research tab.
-export const scholarUrl = "https://scholar.google.com/"
+export const scholarUrl =
+  "https://scholar.google.com/citations?view_op=list_works&hl=en&user=QSHpRoIAAAAJ"
 
 // LinkedIn profile shown in the Experience tab.
-export const linkedinUrl = "https://www.linkedin.com/"
+export const linkedinUrl = "https://www.linkedin.com/in/richard-tl/"
 
 // ---------------------------------------------------------------------------
 // EXPERIENCE — professional history
@@ -121,44 +126,55 @@ export const experiences: Experience[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// PORTFOLIO — artwork & writing (rolodex). Writing links to reading.supply
+// PORTFOLIO — Art / Writing / Music toggles
 // ---------------------------------------------------------------------------
-// Artwork rolodex — a grid of images. Drop files in /public/art (or /public/images)
-// and list their paths here. Leave the array item as a bare string path.
-export const artwork: string[] = [
-  "/art/design0.png",
-  "/art/design1.png",
-  "/art/design2.png",
-  "/art/design3.png",
-  "/art/design4.png",
-  "/art/design5.png",
-  "/art/design6.png",
-  "/art/design7.png",
-  "/art/design8.png",
-  "/art/design9.png",
-  "/art/design10.png",
-  "/art/design11.png",
-  "/art/collage1.png",
-  "/art/collage2.png",
-  "/art/collage3.png",
-]
-
-// Boxed links that sit beside the artwork rolodex.
-export type PortfolioLink = {
-  label: string
-  href?: string
-  disabled?: boolean
+// ART GALLERY — replicates the layout of the previous site.
+//   spread : a single wide image centered up top   -> /public/images
+//   photos : a masonry column grid of photographs   -> /public/images + /public/images/photos
+//   designs: a stacked, full-width run of artwork    -> /public/art
+export const artGallery = {
+  spread: "/images/grad_flip3.png",
+  photos: [
+    "/images/landscape1.png",
+    "/images/landscape2.png",
+    "/images/landscape4.png",
+    "/images/landscape3.png",
+    "/images/photos/row2p1.png",
+    "/images/photos/row2p2.png",
+    "/images/photos/row2p3.png",
+    "/images/photos/row2p4.png",
+    "/images/photos/row3p1.png",
+    "/images/photos/row3p2.png",
+    "/images/photos/row3p3.png",
+    "/images/photos/row3p4.png",
+  ],
+  designs: [
+    "/art/design0.png",
+    "/art/design1.png",
+    "/art/design2.png",
+    "/art/design3.png",
+    "/art/design4.png",
+    "/art/design5.png",
+    "/art/design6.png",
+    "/art/design7.png",
+    "/art/design8.png",
+    "/art/design9.png",
+    "/art/design10.png",
+    "/art/design11.png",
+    "/art/collage1.png",
+    "/art/collage2.png",
+    "/art/collage3.png",
+  ],
 }
 
-export const portfolioLinks: PortfolioLink[] = [
-  {
-    label: "Writing",
-    href: "https://reading.supply",
-  },
-  {
-    label: "Music",
-    disabled: true,
-  },
-]
+// WRITING — reading.supply plus a couple of pertinent links.
+export const readingSupplyUrl = "https://reading.supply/@rilee"
 
-export const readingSupplyUrl = "https://reading.supply"
+export const writing = {
+  url: readingSupplyUrl,
+  note: "poems from the margins of math notes",
+  links: [
+    { label: "video", href: "https://youtu.be/GNhFAVroWJA" },
+    { label: "Rat Rock Magazine — 2023", href: "https://www.ratrockmagazine.com/feature/2023/1/31/richard-lee" },
+  ],
+}
