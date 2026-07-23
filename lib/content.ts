@@ -30,47 +30,60 @@ export type Publication = {
 export const publications: Publication[] = [
   {
     title:
-      "Covert perception of AI adversely impacts team performance and changes physiological dynamics despite human-level AI competence",
+      "Covert Perception of AI Adversely Impacts Team Performance and Changes Physiological Dynamics Despite Human-Level AI Competence",
     authors: "Y Qin, RT Lee, P Sajda",
     venue: "npj Artificial Intelligence",
     year: "2026",
+    href: "https://www.nature.com/articles/s44387-026-00130-1",
   },
   {
     title:
-      "Audio-tactile association improves pitch perception in listeners with and without cochlear implants",
+      "Audio-Tactile Association Improves Pitch Perception in Listeners With and Without Cochlear Implants",
     authors: "A Hodges, M Fitzgerald, L May, RT Lee, R Goldsworthy, T Fujioka",
-    venue: "Brain Research, 150182",
+    venue: "Brain Research",
     year: "2026",
+    href: "https://www.sciencedirect.com/journal/brain-research",
   },
   {
-    title: "Physiologically informed predictability of a teammate's future actions forecasts team performance",
+    title: "Physiologically Informed Predictability of a Teammate's Future Actions Forecasts Team Performance",
     authors: "Y Qin, RT Lee, W Zhang, X Sun, P Sajda",
     venue: "iScience 28 (5)",
     year: "2025",
+    href: "https://www.cell.com/iscience/fulltext/S2589-0042(25)00001-0",
   },
   {
-    title: "Pupil-Linked Arousal is Predictive of Team Performance in a Virtual Reality Sensory-Motor Task",
+    title: "MOV-AAD: A Large-Scale Multimodal Dataset for Dynamic Auditory Attention in Naturalistic Listening",
+    authors: "X He, V Choudhari, T Spratt, A Raghvan, R Lee, N Mesgarani",
+    venue: "Interspeech",
+    year: "2026",
+    href: "https://interspeech2026.org/en-AU",
+  },
+  {
+    title: "Pupil-Linked Arousal is Predictive of Team Performance in a Virtual Reality (VR) Sensory-Motor Task",
     authors: "Y Qin, W Zhang, R Lee, X Sun, P Sajda",
     venue: "IEEE EMBC",
     year: "2024",
+    href: "https://ieeexplore.ieee.org/abstract/document/10782124",
   },
   {
-    title: "MaxPy: An open-source Python package for text-based generation of MaxMSP patches",
+    title: "MaxPy: An Open-Source Python Package for Text-Based Generation of MaxMSP Patches",
     authors: "RY Liu, S Peterson, R Lee, M Santolucito",
     venue: "NIME",
     year: "2023",
+    href: "https://www.nime2023.org/",
   },
   {
-    title: "Predictive power of pupil dynamics in a team based virtual reality task",
+    title: "Predictive Power of Pupil Dynamics in a Team Based Virtual Reality Task",
     authors: "Y Qin, W Zhang, R Lee, X Sun, P Sajda",
-    venue: "IEEE VR",
+    venue: "IEEE VRW",
     year: "2022",
+    href: "https://ieeexplore.ieee.org/document/9757720",
   },
 ]
 
 // Short lead line shown above the publication list.
 export const researchIntro =
-  "My published work spans multimodal transformer models for human-AI teams and neuroscience."
+  "My published work spans multimodal transformer models for human-AI team dynamics and multisensory integration in neuroscience."
 
 // Google Scholar profile shown in the Research tab.
 export const scholarUrl =
@@ -128,25 +141,26 @@ export const experiences: Experience[] = [
 // ---------------------------------------------------------------------------
 // PORTFOLIO — Art / Writing / Music toggles
 // ---------------------------------------------------------------------------
-// ART GALLERY — replicates the layout of the previous site.
-//   spread : a single wide image centered up top   -> /public/images
-//   photos : a masonry column grid of photographs   -> /public/images + /public/images/photos
-//   designs: a stacked, full-width run of artwork    -> /public/art
+// ART GALLERY — replicates the layout of the previous site. Every file now
+// lives in /public/art (no separate images folder).
+//   spread : a single wide banner image centered up top
+//   photos : a masonry column grid of photographs
+//   designs: a stacked, full-width run of artwork
 export const artGallery = {
-  spread: "/images/grad_flip3.png",
+  spread: "/art/banner.png",
   photos: [
-    "/images/landscape1.png",
-    "/images/landscape2.png",
-    "/images/landscape4.png",
-    "/images/landscape3.png",
-    "/images/photos/row2p1.png",
-    "/images/photos/row2p2.png",
-    "/images/photos/row2p3.png",
-    "/images/photos/row2p4.png",
-    "/images/photos/row3p1.png",
-    "/images/photos/row3p2.png",
-    "/images/photos/row3p3.png",
-    "/images/photos/row3p4.png",
+    "/art/row1p1.png",
+    "/art/row1p2.png",
+    "/art/row1p3.png",
+    "/art/row1p4.png",
+    "/art/row2p1.png",
+    "/art/row2p2.png",
+    "/art/row2p3.png",
+    "/art/row2p4.png",
+    "/art/row3p1.png",
+    "/art/row3p2.png",
+    "/art/row3p3.png",
+    "/art/row3p4.png",
   ],
   designs: [
     "/art/design0.png",
@@ -166,6 +180,24 @@ export const artGallery = {
     "/art/collage3.png",
   ],
 }
+
+// ENGINEERING — an evenly spaced grid of project tiles. Each tile can later
+// link out to a project page or repo. Leave `href` undefined for a
+// non-clickable placeholder tile.
+export type EngProject = {
+  title: string
+  meta?: string
+  href?: string
+}
+
+export const engProjects: EngProject[] = [
+  { title: "Project One", meta: "Coming soon" },
+  { title: "Project Two", meta: "Coming soon" },
+  { title: "Project Three", meta: "Coming soon" },
+  { title: "Project Four", meta: "Coming soon" },
+  { title: "Project Five", meta: "Coming soon" },
+  { title: "Project Six", meta: "Coming soon" },
+]
 
 // WRITING — reading.supply plus a couple of pertinent links.
 export const readingSupplyUrl = "https://reading.supply/@rilee"

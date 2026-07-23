@@ -1,44 +1,79 @@
 "use client"
 
 import { useState } from "react"
-import { ArtGallery } from "@/components/art-gallery"
-import { writing } from "@/lib/content"
+import Link from "next/link"
+import { engProjects, writing } from "@/lib/content"
 
-const subTabs = [
-  { id: "art", label: "Art" },
+const toggleTabs = [
+  { id: "eng", label: "Eng" },
   { id: "writing", label: "Writing" },
   { id: "music", label: "Music" },
 ] as const
 
-type SubTabId = (typeof subTabs)[number]["id"]
+type ToggleTabId = (typeof toggleTabs)[number]["id"]
+
+const tabClass = (isActive: boolean) =>
+  `text-sm uppercase tracking-wider transition-colors ${
+    isActive ? "text-foreground underline underline-offset-4" : "text-muted-foreground hover:text-foreground"
+  }`
 
 export function PortfolioSection() {
-  const [active, setActive] = useState<SubTabId>("art")
+  const [active, setActive] = useState<ToggleTabId>("eng")
 
   return (
     <div className="flex flex-col gap-10">
-      {/* Sub-toggle: Art / Writing / Music */}
-      <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap gap-8">
-        {subTabs.map((tab) => {
-          const isActive = active === tab.id
-          return (
-            <button
-              key={tab.id}
-              role="tab"
-              aria-selected={isActive}
-              onClick={() => setActive(tab.id)}
-              className={`text-sm uppercase tracking-wider transition-colors ${
-                isActive ? "text-foreground underline underline-offset-4" : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {tab.label}
-            </button>
-          )
-        })}
+      {/* Sub-toggle: Eng / Art (opens its own white page) / Writing / Music */}
+      <div className="flex flex-wrap gap-8">
+        <button
+          aria-selected={active === "eng"}
+          onClick={() => setActive("eng")}
+          className={tabClass(active === "eng")}
+        >
+          Eng
+        </button>
+        <Link href="/art" className={tabClass(false)}>
+          Art
+        </Link>
+        {toggleTabs
+          .filter((tab) => tab.id !== "eng")
+          .map((tab) => {
+            const isActive = active === tab.id
+            return (
+              <button
+                key={tab.id}
+                aria-selected={isActive}
+                onClick={() => setActive(tab.id)}
+                className={tabClass(isActive)}
+              >
+                {tab.label}
+              </button>
+            )
+          })}
       </div>
 
       {/* Panels */}
-      {active === "art" && <ArtGallery />}
+      {active === "eng" && (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {engProjects.map((project, i) => {
+            const inner = (
+              <>
+                <div className="aspect-[4/3] w-full bg-muted transition-colors group-hover:bg-muted/70" />
+                <p className="mt-2 text-sm">{project.title}</p>
+                {project.meta ? <p className="text-[13px] text-muted-foreground">{project.meta}</p> : null}
+              </>
+            )
+            return project.href ? (
+              <a key={i} href={project.href} target="_blank" rel="noreferrer" className="group block">
+                {inner}
+              </a>
+            ) : (
+              <div key={i} className="group block">
+                {inner}
+              </div>
+            )
+          })}
+        </div>
+      )}
 
       {active === "writing" && (
         <div className="flex flex-col gap-4">

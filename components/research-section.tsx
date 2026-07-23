@@ -33,11 +33,11 @@ export function ResearchSection() {
             const inner = (
               <div className="grid grid-cols-1 gap-1 md:grid-cols-[1fr_auto] md:gap-8">
                 <div>
-                  <p className="leading-relaxed underline-offset-4 group-hover:underline">{pub.title}</p>
-                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{renderAuthors(pub.authors)}</p>
-                  <p className="text-sm italic leading-relaxed text-muted-foreground">{pub.venue}</p>
+                  <p className="text-[15px] leading-relaxed underline-offset-4 group-hover:underline">{pub.title}</p>
+                  <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{renderAuthors(pub.authors)}</p>
+                  <p className="text-[13px] italic leading-relaxed text-muted-foreground">{pub.venue}</p>
                 </div>
-                <span className="text-sm text-muted-foreground md:pt-0.5">{pub.year}</span>
+                <span className="text-[13px] text-muted-foreground md:pt-0.5">{pub.year}</span>
               </div>
             )
             return (
