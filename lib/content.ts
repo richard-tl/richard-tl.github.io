@@ -136,6 +136,10 @@ export const experiences: Experience[] = [
 export const artGallery = {
   spread: "/art/banner.png",
   photos: [
+    "/art/row1p1.png",
+    "/art/row1p2.png",
+    "/art/row1p3.png",
+    "/art/row1p4.png",
     "/art/row2p1.png",
     "/art/row2p2.png",
     "/art/row2p3.png",
@@ -163,6 +167,24 @@ export const artGallery = {
     "/art/collage3.png",
   ],
 }
+
+// ENGINEERING — an evenly spaced grid of project tiles. Each tile can later
+// link out to a project page or repo. Leave `href` undefined for a
+// non-clickable placeholder tile.
+export type EngProject = {
+  title: string
+  meta?: string
+  href?: string
+}
+
+export const engProjects: EngProject[] = [
+  { title: "Project One", meta: "Coming soon" },
+  { title: "Project Two", meta: "Coming soon" },
+  { title: "Project Three", meta: "Coming soon" },
+  { title: "Project Four", meta: "Coming soon" },
+  { title: "Project Five", meta: "Coming soon" },
+  { title: "Project Six", meta: "Coming soon" },
+]
 
 // WRITING — reading.supply plus a couple of pertinent links.
 export const readingSupplyUrl = "https://reading.supply/@rilee"

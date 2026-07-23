@@ -2,9 +2,10 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { writing } from "@/lib/content"
+import { engProjects, writing } from "@/lib/content"
 
 const toggleTabs = [
+  { id: "eng", label: "Eng" },
   { id: "writing", label: "Writing" },
   { id: "music", label: "Music" },
 ] as const
@@ -17,26 +18,63 @@ const tabClass = (isActive: boolean) =>
   }`
 
 export function PortfolioSection() {
-  const [active, setActive] = useState<ToggleTabId>("writing")
+  const [active, setActive] = useState<ToggleTabId>("eng")
 
   return (
     <div className="flex flex-col gap-10">
-      {/* Sub-toggle: Art (opens its own white page) / Writing / Music */}
+      {/* Sub-toggle: Eng / Art (opens its own white page) / Writing / Music */}
       <div className="flex flex-wrap gap-8">
+        <button
+          aria-selected={active === "eng"}
+          onClick={() => setActive("eng")}
+          className={tabClass(active === "eng")}
+        >
+          Eng
+        </button>
         <Link href="/art" className={tabClass(false)}>
           Art
         </Link>
-        {toggleTabs.map((tab) => {
-          const isActive = active === tab.id
-          return (
-            <button key={tab.id} aria-selected={isActive} onClick={() => setActive(tab.id)} className={tabClass(isActive)}>
-              {tab.label}
-            </button>
-          )
-        })}
+        {toggleTabs
+          .filter((tab) => tab.id !== "eng")
+          .map((tab) => {
+            const isActive = active === tab.id
+            return (
+              <button
+                key={tab.id}
+                aria-selected={isActive}
+                onClick={() => setActive(tab.id)}
+                className={tabClass(isActive)}
+              >
+                {tab.label}
+              </button>
+            )
+          })}
       </div>
 
       {/* Panels */}
+      {active === "eng" && (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {engProjects.map((project, i) => {
+            const inner = (
+              <>
+                <div className="aspect-[4/3] w-full bg-muted transition-colors group-hover:bg-muted/70" />
+                <p className="mt-2 text-sm">{project.title}</p>
+                {project.meta ? <p className="text-[13px] text-muted-foreground">{project.meta}</p> : null}
+              </>
+            )
+            return project.href ? (
+              <a key={i} href={project.href} target="_blank" rel="noreferrer" className="group block">
+                {inner}
+              </a>
+            ) : (
+              <div key={i} className="group block">
+                {inner}
+              </div>
+            )
+          })}
+        </div>
+      )}
+
       {active === "writing" && (
         <div className="flex flex-col gap-4">
           <a
