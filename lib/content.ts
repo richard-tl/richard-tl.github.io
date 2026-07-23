@@ -193,11 +193,7 @@ export type EngProject = {
 
 export const engProjects: EngProject[] = [
   { title: "Boombox", meta: "Portable hi-fi speaker", slug: "boombox" },
-  { title: "Project Two", meta: "Coming soon" },
-  { title: "Project Three", meta: "Coming soon" },
-  { title: "Project Four", meta: "Coming soon" },
-  { title: "Project Five", meta: "Coming soon" },
-  { title: "Project Six", meta: "Coming soon" },
+  { title: "Ultrasound Robotics", meta: "Coming soon" },
 ]
 
 // WRITING — reading.supply plus a couple of pertinent links.
