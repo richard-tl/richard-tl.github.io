@@ -10,7 +10,7 @@ export const profile = {
   // Leave "" to show the grey placeholder box.
   photo: "/profile/headshot.jpg",
   bio: [
-    "I'm a PhD student at MIT EECS. I work on acoustic sensing, computational manufacturing, and audio machine learning. My research is conducted at the Research Laboratory for Electronics (RLE) with Prof. Mark Rau and supported by a Presidential Fellowship.",
+    "I'm a PhD student at MIT EECS. I work on acoustic sensing, computational manufacturing, and audio machine learning. My research is conducted at the Research Laboratory for Electronics with Prof. Mark Rau and supported by a Presidential Fellowship.",
     "Before this I got my MA at Stanford, working with Takako Fujioka and Jeremy Dahl. I completed my BS EE at Columbia, advised by Paul Sajda and Nima Mesgarani.",
     "My inspirations draw from concerts, film, compilers and architecture, and I write and make art in my free time.",
   ],
