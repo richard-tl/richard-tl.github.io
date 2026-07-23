@@ -1,0 +1,2 @@
+# This file tells GitHub Pages not to run the site through Jekyll,
+# which would otherwise ignore Next.js's _next asset directory.
