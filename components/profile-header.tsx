@@ -25,7 +25,7 @@ export function ProfileHeader() {
 
       {/* Bio */}
       <div className="flex flex-col">
-        <h1 className="text-sm font-bold uppercase tracking-wide leading-relaxed">{profile.name}:</h1>
+        <h1 className="text-[13px] font-bold uppercase tracking-wide leading-relaxed">{profile.name}:</h1>
         <div className="mt-6 flex flex-col gap-5 text-base leading-relaxed text-pretty">
           {profile.bio.map((paragraph, i) => (
             <p key={i}>{paragraph}</p>
