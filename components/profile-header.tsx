@@ -31,7 +31,9 @@ export function ProfileHeader() {
             <p key={i}>{paragraph}</p>
           ))}
         </div>
-        <p className="mt-6 text-base leading-relaxed text-muted-foreground">{profile.email}</p>
+        <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+          {profile.email} <span className="whitespace-nowrap">{"📨 .(ツ)~#!’"}</span>
+        </p>
       </div>
     </header>
   )
