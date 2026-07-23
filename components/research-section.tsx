@@ -14,7 +14,7 @@ export function ResearchSection() {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
-        <p className="max-w-prose text-base leading-relaxed text-pretty">{researchIntro}</p>
+        <p className="max-w-prose text-sm italic leading-relaxed text-pretty">{researchIntro}</p>
         <a
           href={scholarUrl}
           target="_blank"
