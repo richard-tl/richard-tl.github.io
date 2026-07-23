@@ -6,8 +6,9 @@
 export const profile = {
   name: "Richard Lee",
   email: "rtlee at mit [.] edu",
-  // Drop your headshot in /public and update this path (e.g. "/richard.jpg")
-  photo: "",
+  // Drop your headshot in /public/profile and update the filename below.
+  // Leave "" to show the grey placeholder box.
+  photo: "/profile/headshot.jpg",
   bio: [
     "I'm a PhD student at MIT EECS. I work on acoustic sensing, computational manufacturing, and audio machine learning. My research is conducted at the Research Laboratory for Electronics (RLE) with Prof. Mark Rau and supported by a Presidential Fellowship.",
     "Before this I got my MA at Stanford, working with Takako Fujioka and Jeremy Dahl. I completed my BS EE at Columbia, advised by Paul Sajda and Nima Mesgarani.",
@@ -28,33 +29,50 @@ export type Publication = {
 
 export const publications: Publication[] = [
   {
-    title: "Placeholder: Acoustic Sensing for Computational Manufacturing",
-    authors: "R. Lee, M. Rau, et al.",
-    venue: "Conference on Acoustics & Signal Processing",
+    title:
+      "Covert perception of AI adversely impacts team performance and changes physiological dynamics despite human-level AI competence",
+    authors: "Y Qin, RT Lee, P Sajda",
+    venue: "npj Artificial Intelligence",
     year: "2026",
-    href: "#",
   },
   {
-    title: "Placeholder: Learning Audio Representations from Physical Systems",
-    authors: "R. Lee, et al.",
-    venue: "Neural Information Processing Systems (NeurIPS)",
+    title:
+      "Audio-tactile association improves pitch perception in listeners with and without cochlear implants",
+    authors: "A Hodges, M Fitzgerald, L May, RT Lee, R Goldsworthy, T Fujioka",
+    venue: "Brain Research, 150182",
+    year: "2026",
+  },
+  {
+    title: "Physiologically informed predictability of a teammate's future actions forecasts team performance",
+    authors: "Y Qin, RT Lee, W Zhang, X Sun, P Sajda",
+    venue: "iScience 28 (5)",
     year: "2025",
-    href: "#",
   },
   {
-    title: "Placeholder: A Framework for Real-Time Audio Machine Learning",
-    authors: "R. Lee, T. Fujioka, J. Dahl",
-    venue: "Journal of the Acoustical Society of America",
+    title: "Pupil-Linked Arousal is Predictive of Team Performance in a Virtual Reality Sensory-Motor Task",
+    authors: "Y Qin, W Zhang, R Lee, X Sun, P Sajda",
+    venue: "IEEE EMBC",
     year: "2024",
-    href: "#",
+  },
+  {
+    title: "MaxPy: An open-source Python package for text-based generation of MaxMSP patches",
+    authors: "RY Liu, S Peterson, R Lee, M Santolucito",
+    venue: "NIME",
+    year: "2023",
+  },
+  {
+    title: "Predictive power of pupil dynamics in a team based virtual reality task",
+    authors: "Y Qin, W Zhang, R Lee, X Sun, P Sajda",
+    venue: "IEEE VR",
+    year: "2022",
   },
 ]
 
-export const education = [
-  { degree: "PhD, EECS", school: "Massachusetts Institute of Technology", year: "2024 — present" },
-  { degree: "MA", school: "Stanford University", year: "2022 — 2024" },
-  { degree: "BS, Electrical Engineering", school: "Columbia University", year: "2018 — 2022" },
-]
+// Google Scholar profile shown in the Research tab.
+export const scholarUrl = "https://scholar.google.com/"
+
+// LinkedIn profile shown in the Experience tab.
+export const linkedinUrl = "https://www.linkedin.com/"
 
 // ---------------------------------------------------------------------------
 // EXPERIENCE — professional history
@@ -128,7 +146,6 @@ export const artwork: string[] = [
 // Boxed links that sit beside the artwork rolodex.
 export type PortfolioLink = {
   label: string
-  description: string
   href?: string
   disabled?: boolean
 }
@@ -136,12 +153,10 @@ export type PortfolioLink = {
 export const portfolioLinks: PortfolioLink[] = [
   {
     label: "Writing",
-    description: "Essays and notes on reading.supply",
     href: "https://reading.supply",
   },
   {
     label: "Music",
-    description: "Coming soon",
     disabled: true,
   },
 ]

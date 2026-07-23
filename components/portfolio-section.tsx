@@ -9,13 +9,10 @@ export function PortfolioSection() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {portfolioLinks.map((link, i) => {
           const content = (
-            <>
-              <div className="flex items-baseline justify-between gap-3">
-                <span className="text-sm uppercase tracking-wider">{link.label}</span>
-                {!link.disabled ? <span aria-hidden className="text-muted-foreground">{"↗"}</span> : null}
-              </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground text-pretty">{link.description}</p>
-            </>
+            <div className="flex items-center justify-between gap-3">
+              <span className="text-sm uppercase tracking-wider">{link.label}</span>
+              {!link.disabled ? <span aria-hidden className="text-muted-foreground">{"↗"}</span> : null}
+            </div>
           )
 
           if (link.disabled || !link.href) {
