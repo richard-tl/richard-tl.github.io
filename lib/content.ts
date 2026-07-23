@@ -181,17 +181,18 @@ export const artGallery = {
   ],
 }
 
-// ENGINEERING — an evenly spaced grid of project tiles. Each tile can later
-// link out to a project page or repo. Leave `href` undefined for a
-// non-clickable placeholder tile.
+// ENGINEERING — an evenly spaced grid of project tiles. Give a tile a `slug`
+// to link it to its markdown project page at /projects/<slug> (content lives in
+// content/projects/<slug>/<slug>1.md, <slug>2.md, ...). Leave `slug` undefined
+// for a non-clickable placeholder tile.
 export type EngProject = {
   title: string
   meta?: string
-  href?: string
+  slug?: string
 }
 
 export const engProjects: EngProject[] = [
-  { title: "Project One", meta: "Coming soon" },
+  { title: "Boombox", meta: "Portable hi-fi speaker", slug: "boombox" },
   { title: "Project Two", meta: "Coming soon" },
   { title: "Project Three", meta: "Coming soon" },
   { title: "Project Four", meta: "Coming soon" },
