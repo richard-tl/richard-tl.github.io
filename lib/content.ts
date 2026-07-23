@@ -63,50 +63,87 @@ export type Experience = {
   role: string
   org: string
   period: string
-  summary: string
+  bullets: string[]
 }
 
 export const experiences: Experience[] = [
   {
-    role: "Graduate Research Assistant",
-    org: "Research Laboratory for Electronics, MIT",
-    period: "2024 — present",
-    summary:
-      "Placeholder: Research on acoustic sensing and computational manufacturing under a Presidential Fellowship.",
+    role: "R&D Engineer",
+    org: "Sonovance / Stanford Medicine",
+    period: "2025",
+    bullets: ["Signal processing for 3D ultrasound imaging", "Robotic capture via reinforcement learning"],
   },
   {
-    role: "Research Intern",
-    org: "Placeholder Company / Lab",
-    period: "Summer 2023",
-    summary: "Placeholder: A short description of what you worked on and the impact it had.",
+    role: "Audio Hardware",
+    org: "Tesla",
+    period: "2024 — 25",
+    bullets: [
+      "In-cabin acoustic interaction + ToF sensor mapping",
+      "Wrote custom firmware script for filter selection UI",
+    ],
   },
   {
-    role: "Teaching Assistant",
-    org: "Stanford University",
-    period: "2022 — 2024",
-    summary: "Placeholder: Courses assisted and responsibilities.",
+    role: "ML Researcher",
+    org: "LIINC, Columbia BME",
+    period: "2020 — 25",
+    bullets: ["Multimodal transformers for human-AI team dynamics"],
+  },
+  {
+    role: "Coordinator",
+    org: "Nucleate",
+    period: "2022",
+    bullets: ["Design and Partnerships for NYC biotech incubator"],
+  },
+  {
+    role: "Associate",
+    org: "Bowery Capital",
+    period: "2021",
+    bullets: ["Due diligence on hardware and medical SaaS"],
   },
 ]
 
 // ---------------------------------------------------------------------------
 // PORTFOLIO — artwork & writing (rolodex). Writing links to reading.supply
 // ---------------------------------------------------------------------------
-export type PortfolioItem = {
-  title: string
-  kind: "art" | "writing"
-  // Use a real image path from /public, or leave blank for a grey placeholder tile
-  image?: string
+// Artwork rolodex — a grid of images. Drop files in /public/art (or /public/images)
+// and list their paths here. Leave the array item as a bare string path.
+export const artwork: string[] = [
+  "/art/design0.png",
+  "/art/design1.png",
+  "/art/design2.png",
+  "/art/design3.png",
+  "/art/design4.png",
+  "/art/design5.png",
+  "/art/design6.png",
+  "/art/design7.png",
+  "/art/design8.png",
+  "/art/design9.png",
+  "/art/design10.png",
+  "/art/design11.png",
+  "/art/collage1.png",
+  "/art/collage2.png",
+  "/art/collage3.png",
+]
+
+// Boxed links that sit beside the artwork rolodex.
+export type PortfolioLink = {
+  label: string
+  description: string
   href?: string
-  meta?: string
+  disabled?: boolean
 }
 
-export const portfolio: PortfolioItem[] = [
-  { title: "Untitled Study I", kind: "art", meta: "2026", href: "#" },
-  { title: "On Compilers & Composition", kind: "writing", meta: "reading.supply", href: "https://reading.supply" },
-  { title: "Field Recording Series", kind: "art", meta: "2025", href: "#" },
-  { title: "Notes on Architecture", kind: "writing", meta: "reading.supply", href: "https://reading.supply" },
-  { title: "Concert Sketchbook", kind: "art", meta: "2025", href: "#" },
-  { title: "A Short Essay on Film", kind: "writing", meta: "reading.supply", href: "https://reading.supply" },
+export const portfolioLinks: PortfolioLink[] = [
+  {
+    label: "Writing",
+    description: "Essays and notes on reading.supply",
+    href: "https://reading.supply",
+  },
+  {
+    label: "Music",
+    description: "Coming soon",
+    disabled: true,
+  },
 ]
 
 export const readingSupplyUrl = "https://reading.supply"
