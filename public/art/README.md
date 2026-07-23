@@ -1,20 +1,17 @@
-# Artwork
+# /public/art
 
-Drop your artwork images in this folder. They appear as the grid ("rolodex")
-in the Portfolio tab.
+Design work and collages for the Portfolio → **Art** tab. These render as a
+full-width, single-column stack below the photo grid.
 
-1. Add image files here (`.jpg`, `.png`, `.webp`, etc.).
-2. List each file path in the `artwork` array in `lib/content.ts`, e.g.:
+Drop these files here (names must match `artGallery.designs` in `lib/content.ts`):
 
-   ```ts
-   export const artwork: string[] = [
-     "/art/design0.png",
-     "/art/collage1.png",
-   ]
-   ```
+- `design0.png` … `design11.png`
+- `collage1.png`, `collage2.png`, `collage3.png`
 
-3. The current default names (`design0.png` … `collage3.png`) are placeholders —
-   rename yours to match, or edit the array to match your filenames.
+Steps to change the set:
 
-Square images look best (each tile is a 1:1 box). Any tile whose file is
-missing is hidden automatically, so the grid always stays clean.
+1. Add image files here (`.png`, `.jpg`, `.webp`, etc.).
+2. Edit the `artGallery.designs` array in `lib/content.ts` to match your filenames.
+
+Any image whose file is missing is hidden automatically, so the layout always
+stays clean.

@@ -1,64 +1,76 @@
 "use client"
 
-import { artwork, portfolioLinks } from "@/lib/content"
+import { useState } from "react"
+import { ArtGallery } from "@/components/art-gallery"
+import { writing } from "@/lib/content"
+
+const subTabs = [
+  { id: "art", label: "Art" },
+  { id: "writing", label: "Writing" },
+  { id: "music", label: "Music" },
+] as const
+
+type SubTabId = (typeof subTabs)[number]["id"]
 
 export function PortfolioSection() {
+  const [active, setActive] = useState<SubTabId>("art")
+
   return (
     <div className="flex flex-col gap-10">
-      {/* Boxed links — writing + future music */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        {portfolioLinks.map((link, i) => {
-          const content = (
-            <div className="flex items-center justify-between gap-3">
-              <span className="text-sm uppercase tracking-wider">{link.label}</span>
-              {!link.disabled ? <span aria-hidden className="text-muted-foreground">{"↗"}</span> : null}
-            </div>
-          )
-
-          if (link.disabled || !link.href) {
-            return (
-              <div
-                key={i}
-                aria-disabled
-                className="flex flex-col border border-border/40 p-5 text-muted-foreground/70"
-              >
-                {content}
-              </div>
-            )
-          }
-
+      {/* Sub-toggle: Art / Writing / Music */}
+      <div role="tablist" aria-label="Portfolio categories" className="flex flex-wrap gap-8">
+        {subTabs.map((tab) => {
+          const isActive = active === tab.id
           return (
-            <a
-              key={i}
-              href={link.href}
-              target="_blank"
-              rel="noreferrer"
-              className="group flex flex-col border border-border p-5 transition-colors hover:bg-muted/50"
+            <button
+              key={tab.id}
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => setActive(tab.id)}
+              className={`text-sm uppercase tracking-wider transition-colors ${
+                isActive ? "text-foreground underline underline-offset-4" : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              {content}
-            </a>
+              {tab.label}
+            </button>
           )
         })}
       </div>
 
-      {/* Artwork rolodex */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-        {artwork.map((src, i) => (
-          <div key={i} className="aspect-square w-full overflow-hidden bg-muted">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src || "/placeholder.svg"}
-              alt={`Artwork ${i + 1}`}
-              loading="lazy"
-              onError={(e) => {
-                // Hide broken tiles cleanly until real art files are added to /public.
-                e.currentTarget.style.visibility = "hidden"
-              }}
-              className="h-full w-full object-cover transition-opacity duration-300 hover:opacity-80"
-            />
+      {/* Panels */}
+      {active === "art" && <ArtGallery />}
+
+      {active === "writing" && (
+        <div className="flex flex-col gap-4">
+          <a
+            href={writing.url}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex items-center gap-2 text-base"
+          >
+            <span className="italic underline underline-offset-4">reading.supply</span>
+            <span aria-hidden className="text-muted-foreground">
+              {"↗"}
+            </span>
+          </a>
+          <p className="text-sm leading-relaxed text-muted-foreground">{writing.note}</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {writing.links.map((link, i) => (
+              <a
+                key={i}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                {link.label}
+              </a>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
+
+      {active === "music" && <p className="text-sm uppercase tracking-wider text-muted-foreground/70">Coming soon</p>}
     </div>
   )
 }

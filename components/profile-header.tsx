@@ -11,7 +11,7 @@ export function ProfileHeader() {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={profile.photo || "/placeholder.svg"}
-            alt={`Portrait of ${profile.name}`}
+            alt="portrait"
             onError={(e) => {
               // Keep a clean grey box until the real headshot is added to /public/profile.
               e.currentTarget.style.visibility = "hidden"
