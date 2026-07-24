@@ -11,23 +11,43 @@ function renderAuthors(authors: string) {
 }
 
 export function ResearchSection() {
+  const hasIntro = researchIntro.trim().length > 0
+
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
-        <p className="max-w-prose text-sm italic leading-relaxed text-pretty">{researchIntro}</p>
-        <a
-          href={scholarUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="group inline-flex shrink-0 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <GoogleScholarIcon className="h-4 w-4" />
-          <span className="underline-offset-4 group-hover:underline">Google Scholar</span>
-        </a>
-      </div>
+      {/* Show intro + scholar link separately when there's intro text */}
+      {hasIntro && (
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-baseline sm:justify-between">
+          <p className="max-w-prose text-sm italic leading-relaxed text-pretty">{researchIntro}</p>
+          <a
+            href={scholarUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group inline-flex shrink-0 items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+          >
+            <GoogleScholarIcon className="h-4 w-4" />
+            <span className="underline-offset-4 group-hover:underline">Google Scholar</span>
+          </a>
+        </div>
+      )}
 
       <div>
-        <h2 className="text-sm uppercase tracking-widest text-muted-foreground">Publications</h2>
+        {/* Show scholar link inline with Publications title when no intro */}
+        <div className={hasIntro ? "" : "flex items-baseline justify-between gap-4"}>
+          <h2 className="text-sm uppercase tracking-widest text-muted-foreground">Publications</h2>
+          {!hasIntro && (
+            <a
+              href={scholarUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
+              <GoogleScholarIcon className="h-4 w-4" />
+              <span className="underline-offset-4 group-hover:underline">Google Scholar</span>
+            </a>
+          )}
+        </div>
+        
         <ul className="mt-4 flex flex-col">
           {publications.map((pub, i) => {
             const inner = (
