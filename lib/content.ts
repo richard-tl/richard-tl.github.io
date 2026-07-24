@@ -83,7 +83,7 @@ export const publications: Publication[] = [
 
 // Short lead line shown above the publication list.
 export const researchIntro =
-  "My published work spans multimodal transformer models for human-AI team dynamics and multisensory integration in neuroscience."
+  ""
 
 // Google Scholar profile shown in the Research tab.
 export const scholarUrl =
