@@ -204,7 +204,7 @@ export const writing = {
   url: readingSupplyUrl,
   note: "poems from the margins of math notes",
   links: [
-    // { label: "video", href: "https://youtu.be/GNhFAVroWJA" },
-    // { label: "Rat Rock Magazine — 2023", href: "https://www.ratrockmagazine.com/feature/2023/1/31/richard-lee" },
+    { label: "", href: "" },
+    { label: "", href: ""  },
   ],
 }
